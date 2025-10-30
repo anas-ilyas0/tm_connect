@@ -22,64 +22,53 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: SingleChildScrollView(
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(height: 100.h, AppImages.tmConnectIcon),
-            SizedBox(height: 10.h),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Container(
+                height: 80,
+                width: 220,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(AppImages.logo),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
             Padding(
-              padding: EdgeInsets.all(24.r),
+              padding: EdgeInsets.symmetric(vertical: 20.r),
               child: Column(
                 children: [
                   Text(
-                    'Your Companion for Mobile Productivity',
-                    style:
-                        AppTextStyle(fontSize: 16.sp, color: Color(0xFF6C6C6C)),
+                    'Mobile Web Services',
+                    style: AppTextStyle(
+                        fontSize: 15.sp, fontWeight: FontWeight.bold),
                   ),
-                  // SizedBox(height: 30.h),
-                  // Text.rich(
-                  //   TextSpan(
-                  //     text: 'Welcome to ',
-                  //     style: AppTextStyle(fontSize: 16.sp),
-                  //     children: [
-                  //       TextSpan(
-                  //         text: AppConstants.appName,
-                  //         style: AppTextStyle(
-                  //           fontSize: 16.sp,
-                  //           fontWeight: FontWeight.bold,
-                  //         ),
-                  //       ),
-                  //       TextSpan(
-                  //         text:
-                  //             ' for Mobile. Your all-in-one productivity app for managing your leads, customers, calendars, and more.',
-                  //         style: AppTextStyle(fontSize: 16.sp),
-                  //       ),
-                  //     ],
-                  //   ),
-                  //   textAlign: TextAlign.start,
-                  // ),
-                  // SizedBox(height: 25.h),
-                  // customRow('Sales Leads'),
-                  // SizedBox(height: 5.h),
-                  // customRow('Customer List'),
-                  // SizedBox(height: 5.h),
-                  // customRow('Estimates'),
-                  // SizedBox(height: 5.h),
-                  // customRow('Active Jobs'),
-                  // SizedBox(height: 5.h),
-                  // customRow('Invoices'),
-                  // SizedBox(height: 5.h),
-                  // customRow('Schedule Board'),
-                  SizedBox(height: 50.h),
-                  SizedBox(
-                    width: 250.w,
-                    height: 50.h,
+                  SizedBox(height: 15.h),
+                  Text(
+                    'SANDBOX',
+                    style: AppTextStyle(
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                  SizedBox(height: 20.h),
+                  Container(
+                    width: 140.w,
+                    height: 60.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        border: Border.all(color: Colors.black, width: 1.5)),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r)),
-                            backgroundColor: AppColors.green),
+                                borderRadius: BorderRadius.circular(6.r)),
+                            backgroundColor: Color(0xFF6568FF)),
                         onPressed: () async {
                           showDialog(
                             context: context,
@@ -107,16 +96,18 @@ class HomeScreen extends StatelessWidget {
                           }
                         },
                         child: Text(
-                          AppConstants.appName,
+                          'Login',
                           style: AppTextStyle(
-                              fontSize: 16.sp, color: AppColors.white),
+                              fontSize: 26.sp,
+                              color: AppColors.white,
+                              fontWeight: FontWeight.bold),
                         )),
                   ),
-                  SizedBox(height: 30.h),
+                  SizedBox(height: 20.h),
                   Text(
-                    '2025 The Maids. All rights reserved.',
-                    style: AppTextStyle(
-                        fontSize: 14.sp, fontWeight: FontWeight.w500),
+                    'This is a secure site for authorized users only.',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyle(fontSize: 14.sp, color: Colors.black87),
                   ),
                   SizedBox(height: 10.h),
                   GestureDetector(
@@ -155,17 +146,16 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(height: 40.h),
+                  SizedBox(height: 20.h),
                   Text(
-                    'Offline',
+                    'Powered by Waterstreet',
                     style: AppTextStyle(
-                        fontSize: 14.sp, fontWeight: FontWeight.w500),
+                        fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(height: 10.h),
                   Text(
-                    'Click here to download today`s schedule',
+                    'Franchise Management Software',
                     style: AppTextStyle(
-                        fontSize: 14.sp, fontWeight: FontWeight.w500),
+                        fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
