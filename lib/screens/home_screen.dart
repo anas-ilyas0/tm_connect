@@ -12,16 +12,14 @@ class HomeScreen extends StatelessWidget {
   customRow(String text) {
     return Row(
       spacing: 5.w,
-      children: [
-        Image.asset(height: 20, AppImages.checkBox),
-        Text(text),
-      ],
+      children: [Image.asset(height: 20, AppImages.checkBox), Text(text)],
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,75 +39,88 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.r),
+              padding: EdgeInsets.symmetric(vertical: 20),
               child: Column(
                 children: [
                   Text(
                     'Mobile Web Services',
                     style: AppTextStyle(
-                        fontSize: 15.sp, fontWeight: FontWeight.bold),
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 15.h),
                   Text(
                     'SANDBOX',
                     style: AppTextStyle(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
                   ),
                   SizedBox(height: 20.h),
                   Container(
-                    width: 140.w,
-                    height: 60.h,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        border: Border.all(color: Colors.black, width: 1.5)),
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(color: Colors.black, width: 1.5),
+                    ),
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6.r)),
-                            backgroundColor: Color(0xFF6568FF)),
-                        onPressed: () async {
-                          showDialog(
-                            context: context,
-                            barrierDismissible: false,
-                            builder: (_) => const Center(
-                              child: CircularProgressIndicator(
-                                color: AppColors.white,
-                              ),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.r),
+                        ),
+                        backgroundColor: Color(0xFF6568FF),
+                      ),
+                      onPressed: () async {
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (_) => const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.white,
+                            ),
+                          ),
+                        );
+                        await Future.delayed(const Duration(seconds: 2));
+                        Navigator.pop(context);
+                        final Uri tmConnectUrl = Uri.parse(
+                          AppConstants.tmConnectUrl,
+                        );
+                        try {
+                          await launchUrl(
+                            tmConnectUrl,
+                            mode: LaunchMode.externalApplication,
+                          );
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Could not launch TMConnect'),
+                              dismissDirection: DismissDirection.horizontal,
                             ),
                           );
-                          await Future.delayed(const Duration(seconds: 2));
-                          Navigator.pop(context);
-                          final Uri tmConnectUrl =
-                              Uri.parse(AppConstants.tmConnectUrl);
-                          try {
-                            await launchUrl(tmConnectUrl,
-                                mode: LaunchMode.externalApplication);
-                          } catch (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Could not launch TMConnect'),
-                                dismissDirection: DismissDirection.horizontal,
-                              ),
-                            );
-                          }
-                        },
+                        }
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
                         child: Text(
                           'Login',
                           style: AppTextStyle(
-                              fontSize: 26.sp,
-                              color: AppColors.white,
-                              fontWeight: FontWeight.bold),
-                        )),
+                            fontSize: 24,
+                            color: AppColors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   SizedBox(height: 20.h),
                   Text(
                     'This is a secure site for authorized users only.',
                     textAlign: TextAlign.center,
-                    style: AppTextStyle(fontSize: 14.sp, color: Colors.black87),
+                    style: AppTextStyle(fontSize: 12, color: Colors.black87),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 10),
                   GestureDetector(
                     onTap: () async {
                       showDialog(
@@ -123,11 +134,14 @@ class HomeScreen extends StatelessWidget {
                       );
                       await Future.delayed(const Duration(seconds: 2));
                       Navigator.pop(context);
-                      final Uri privacyPolicy =
-                          Uri.parse(AppConstants.privacyPolicy);
+                      final Uri privacyPolicy = Uri.parse(
+                        AppConstants.privacyPolicy,
+                      );
                       try {
-                        await launchUrl(privacyPolicy,
-                            mode: LaunchMode.externalApplication);
+                        await launchUrl(
+                          privacyPolicy,
+                          mode: LaunchMode.externalApplication,
+                        );
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -140,22 +154,27 @@ class HomeScreen extends StatelessWidget {
                     child: Text(
                       'Privacy Policy',
                       style: AppTextStyle(
-                          decoration: TextDecoration.underline,
-                          fontSize: 14.sp,
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold),
+                        decoration: TextDecoration.underline,
+                        fontSize: 12,
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   SizedBox(height: 20.h),
                   Text(
                     'Powered by Waterstreet',
                     style: AppTextStyle(
-                        fontSize: 12.sp, fontWeight: FontWeight.w500),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   Text(
                     'Franchise Management Software',
                     style: AppTextStyle(
-                        fontSize: 12.sp, fontWeight: FontWeight.w500),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),

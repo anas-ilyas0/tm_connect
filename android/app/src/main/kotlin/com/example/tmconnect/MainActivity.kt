@@ -1,4 +1,4 @@
-package com.example.tmconnect
+package com.connect.tm
 
 import io.flutter.embedding.android.FlutterActivity
 
